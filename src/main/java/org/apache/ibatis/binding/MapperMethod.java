@@ -127,6 +127,7 @@ public class MapperMethod {
   //多条记录
   private <E> Object executeForMany(SqlSession sqlSession, Object[] args) {
     List<E> result;
+    // 进行mapper方法参数处理
     Object param = method.convertArgsToSqlCommandParam(args);
     //代入RowBounds
     if (method.hasRowBounds()) {
