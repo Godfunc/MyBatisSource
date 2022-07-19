@@ -28,9 +28,10 @@ public class MainTest {
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
         Environment development = new Environment("development", new JdbcTransactionFactory(), dataSource);
         Configuration config = new Configuration();
-        config.addLoadedResource("classpath*:/mapper/**/*.xml");
         // config.addMappers("com.godfunc.mapper"); // 会为这个
-        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(Resources.getResourceAsStream("mapper/SingleTableMapper.xml"), config, Resources.getResourceURL("mapper/SingleTableMapper.xml").getFile(), config.getSqlFragments());
+        XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(Resources.getResourceAsStream("mapper/SingleTableMapper.xml"),
+                config, Resources.getResourceURL("mapper/SingleTableMapper.xml").getFile(),
+                config.getSqlFragments());
         xmlMapperBuilder.parse();
         config.setEnvironment(development);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);

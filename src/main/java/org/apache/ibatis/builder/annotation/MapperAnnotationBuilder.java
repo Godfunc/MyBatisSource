@@ -118,6 +118,7 @@ public class MapperAnnotationBuilder {
   public void parse() {
     String resource = type.toString();
     if (!configuration.isResourceLoaded(resource)) {
+      // 解析mapper对应的xml，xml对应的路径就是跟mapper接口相同路径下，只是后缀名不同
       loadXmlResource();
       configuration.addLoadedResource(resource);
       assistant.setCurrentNamespace(type.getName());
