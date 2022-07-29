@@ -131,6 +131,7 @@ public class MapperMethod {
     Object param = method.convertArgsToSqlCommandParam(args);
     //代入RowBounds
     if (method.hasRowBounds()) {
+      // 针对SQL查询结果进行分页
       RowBounds rowBounds = method.extractRowBounds(args);
       result = sqlSession.<E>selectList(command.getName(), param, rowBounds);
     } else {

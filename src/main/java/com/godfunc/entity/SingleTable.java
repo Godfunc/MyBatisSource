@@ -1,6 +1,8 @@
 package com.godfunc.entity;
 
-public class SingleTable {
+import java.io.Serializable;
+
+public class SingleTable implements Serializable {
 
     private Integer id;
     private String key1;

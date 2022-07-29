@@ -167,6 +167,8 @@ public abstract class BaseExecutor implements Executor {
       //加一,这样递归调用到上面的时候就不会再清局部缓存了
       queryStack++;
       //先根据cachekey从localCache去查
+      // 在执行真正的查询之前，会先往一级缓存 localCache中放入固定值进行占位EXECUTION_PLACEHOLDER，
+      // 会存在一种情况，就是
       list = resultHandler == null ? (List<E>) localCache.getObject(key) : null;
       if (list != null) {
         //若查到localCache缓存，处理localOutputParameterCache
